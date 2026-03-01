@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Face Declarations */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans[wght].woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wght].woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* LMS Color System - Light Mode */
+    /* Primary: Deep Indigo - professional, trustworthy */
+    --primary: 0.42 0.18 264;
+    --primary-foreground: 0.99 0 0;
+    --primary-light: 0.55 0.18 264;
+    --primary-dark: 0.28 0.18 264;
+
+    /* Secondary: Rich Navy */
+    --secondary: 0.22 0.05 250;
+    --secondary-foreground: 0.95 0 0;
+
+    /* Accent: Vibrant Orange - CTAs, highlights */
+    --accent: 0.72 0.19 45;
+    --accent-foreground: 0.10 0 0;
+    --accent-light: 0.82 0.15 45;
+
+    /* Backgrounds */
+    --background: 0.97 0.01 255;
+    --foreground: 0.15 0.02 255;
+
+    /* Cards */
+    --card: 1.0 0 0;
+    --card-foreground: 0.15 0.02 255;
+
+    /* Popovers */
+    --popover: 1.0 0 0;
+    --popover-foreground: 0.15 0.02 255;
+
+    /* Muted */
+    --muted: 0.93 0.01 255;
+    --muted-foreground: 0.50 0.02 255;
+
+    /* Status colors */
+    --destructive: 0.577 0.245 27;
+    --destructive-foreground: 0.985 0 0;
+    --success: 0.60 0.18 145;
+    --success-foreground: 0.99 0 0;
+    --warning: 0.78 0.18 75;
+    --warning-foreground: 0.12 0 0;
+
+    /* Borders & Inputs */
+    --border: 0.87 0.02 255;
+    --input: 0.87 0.02 255;
+    --ring: 0.42 0.18 264;
+
+    /* Navbar - Dark Navy */
+    --navbar: 0.16 0.04 255;
+    --navbar-foreground: 0.97 0 0;
+
+    /* Charts */
+    --chart-1: 0.646 0.222 41;
+    --chart-2: 0.60 0.18 264;
+    --chart-3: 0.55 0.15 145;
+    --chart-4: 0.72 0.19 45;
+    --chart-5: 0.65 0.20 304;
+
+    /* Sidebar */
+    --sidebar: 0.98 0.01 255;
+    --sidebar-foreground: 0.15 0.02 255;
+    --sidebar-primary: 0.42 0.18 264;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.93 0.01 255;
+    --sidebar-accent-foreground: 0.15 0.02 255;
+    --sidebar-border: 0.87 0.02 255;
+    --sidebar-ring: 0.42 0.18 264;
+  }
+
+  .dark {
+    --background: 0.12 0.02 255;
+    --foreground: 0.95 0 0;
+    --card: 0.18 0.03 255;
+    --card-foreground: 0.95 0 0;
+    --popover: 0.22 0.03 255;
+    --popover-foreground: 0.95 0 0;
+    --primary: 0.60 0.18 264;
+    --primary-foreground: 0.99 0 0;
+    --secondary: 0.25 0.04 255;
+    --secondary-foreground: 0.95 0 0;
+    --muted: 0.22 0.03 255;
+    --muted-foreground: 0.65 0.02 255;
+    --accent: 0.75 0.19 45;
+    --accent-foreground: 0.10 0 0;
+    --destructive: 0.65 0.22 27;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.30 0.03 255;
+    --input: 0.30 0.03 255;
+    --ring: 0.60 0.18 264;
+    --navbar: 0.10 0.03 255;
+    --navbar-foreground: 0.97 0 0;
+    --sidebar: 0.16 0.03 255;
+    --sidebar-foreground: 0.95 0 0;
+    --sidebar-primary: 0.60 0.18 264;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.22 0.03 255;
+    --sidebar-accent-foreground: 0.95 0 0;
+    --sidebar-border: 0.30 0.03 255;
+    --sidebar-ring: 0.60 0.18 264;
+    --chart-1: 0.72 0.19 45;
+    --chart-2: 0.60 0.18 264;
+    --chart-3: 0.65 0.20 145;
+    --chart-4: 0.75 0.18 304;
+    --chart-5: 0.65 0.22 27;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Navbar dark */
+  .lms-navbar {
+    background-color: oklch(var(--navbar));
+    color: oklch(var(--navbar-foreground));
+  }
+
+  /* Course card hover effect */
+  .course-card {
+    @apply bg-card rounded-lg overflow-hidden transition-all duration-300;
+    box-shadow: 0 2px 8px -2px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
+  }
+  .course-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -8px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
+  }
+
+  /* Category badge */
+  .category-badge {
+    @apply text-xs font-semibold px-2 py-0.5 rounded-full;
+    background-color: oklch(var(--primary) / 0.12);
+    color: oklch(var(--primary));
+  }
+
+  /* CTA button (orange accent) */
+  .btn-cta {
+    background-color: oklch(var(--accent));
+    color: oklch(var(--accent-foreground));
+    @apply font-semibold px-6 py-2 rounded-md transition-all duration-200;
+  }
+  .btn-cta:hover {
+    background-color: oklch(var(--accent-light));
+    transform: translateY(-1px);
+  }
+
+  /* Progress bar custom */
+  .lms-progress-bar {
+    @apply h-2 rounded-full overflow-hidden bg-muted;
+  }
+  .lms-progress-fill {
+    @apply h-full rounded-full transition-all duration-700;
+    background: linear-gradient(90deg, oklch(var(--primary)), oklch(var(--primary-light, var(--primary))));
+  }
+
+  /* Skeleton pulse */
+  .skeleton {
+    @apply animate-pulse rounded-md;
+    background-color: oklch(var(--muted));
+  }
+
+  /* Admin sidebar */
+  .admin-sidebar {
+    background-color: oklch(var(--navbar));
+    @apply text-white min-h-screen w-60 flex-shrink-0;
+  }
+
+  /* Section accordion */
+  .curriculum-section {
+    @apply border border-border rounded-lg overflow-hidden mb-3;
+  }
+  .curriculum-section-header {
+    @apply flex items-center justify-between px-4 py-3 bg-muted cursor-pointer hover:bg-muted/80 transition-colors;
+  }
+}
